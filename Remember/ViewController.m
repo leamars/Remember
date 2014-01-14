@@ -7,17 +7,35 @@
 //
 
 #import "ViewController.h"
+#import <Parse/Parse.h>
+#import "HubViewController.h"
 
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    NSString *username;
+    NSString *password;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        
+        [self performSegueWithIdentifier:@"toHub" sender:self];
+        
+    } else {
+        
+    }
+    
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -32,9 +50,30 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    username = self.usernameTextField.text;
+    password = self.passwordTextField.text;
+    
     [textField resignFirstResponder];
     
-    return YES;
+    return NO;
 }
+
+- (IBAction)signIn:(id)sender {
+    
+    [PFUser logInWithUsernameInBackground:username password:password
+                                    block:^(PFUser *user, NSError *error) {
+                                        if (user) {
+                                            
+                                            [self performSegueWithIdentifier:@"toHub" sender:self];
+                                            
+                                            
+                                        } else {
+                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Something went wrong. Make sure you're entering the right username and password, and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                            [alert show];
+                                        }
+                                    }];
+}
+
+
 
 @end

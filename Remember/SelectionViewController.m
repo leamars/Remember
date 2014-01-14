@@ -19,6 +19,7 @@
     Option *opt2;
     Option *opt3;
     UIImage *answerImage;
+    int won;
 }
 
 @end
@@ -41,6 +42,18 @@
 	// Do any additional setup after loading the view.
     
     answer = arc4random() % 3;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL firstRunOfDay = [userDefaults boolForKey:@"firstRunOfDay"];
+    if (firstRunOfDay) {
+        [userDefaults setBool:NO forKey:@"firstRunOfDay"];
+        won = 0;
+        [userDefaults setInteger:won forKey:@"GamesWonToday"];
+    }
+    else if (!firstRunOfDay) {
+        won = [userDefaults integerForKey:@"GamesWonToday"];
+        NSLog(@"Games won today: %i", won);
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -185,6 +198,8 @@
 
 - (IBAction)checkAnswer:(id)sender {
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     UIAlertView *correct = [[UIAlertView alloc] initWithTitle:@"Yay!"
                                                       message:@"Your answer is correct!"
                                                      delegate:self
@@ -211,6 +226,7 @@
         if (self.shapeVersionShape) {
             if ([answerImage isEqual:answerShape]) {
                 [correct show];
+                won++;
             }
             else {
                 [incorrect show];
@@ -220,6 +236,8 @@
         else if (!self.shapeVersionShape) {
             if ([btnClr isEqual:corClr]) {
                 [correct show];
+                won++;
+
             }
             
             else {
@@ -231,6 +249,8 @@
         if (self.wordVersionColor) {
             if ([btnTextColor isEqual:corClr]) {
                 [correct show];
+                won++;
+
             }
             
             else {
@@ -241,6 +261,8 @@
         else if (!self.wordVersionColor) {
             if ([btn.titleLabel.text isEqualToString:self.answerWord]) {
                 [correct show];
+                won++;
+
             }
             
             else {
@@ -252,6 +274,8 @@
     else {
         [incorrect show];
     }
+    
+    [userDefaults setInteger:won forKey:@"GamesWonToday"];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -285,7 +309,7 @@
         // send information to delegate - HubViewController
         HubViewController *hvc = [[HubViewController alloc] init];
         self.gamesPlayed++;
-        [hvc recieveData:self.gamesPlayed];
+        [hvc recieveDataForGamesPlayed:self.gamesPlayed andGamesWon:won];
         
         NSArray *viewControllers = [self.navigationController viewControllers];
         

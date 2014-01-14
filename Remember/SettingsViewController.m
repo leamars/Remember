@@ -7,12 +7,15 @@
 //
 
 #import "SettingsViewController.h"
+#import <Parse/Parse.h>
 
 @interface SettingsViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation SettingsViewController {
+    NSString *email;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +30,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.emailTextField.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,7 +41,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    email = self.emailTextField.text;
+    
+    [textField resignFirstResponder];
+    
+    return NO;
+}
+
 - (IBAction)done:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)logOut:(id)sender {
+    
+    [PFUser logOut];    
+    [self performSegueWithIdentifier:@"toSignIn" sender:self];
+}
+
+- (IBAction)passwordReset:(id)sender {
+    [PFUser requestPasswordResetForEmailInBackground:email];
+    NSLog(@"%@", email);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request sent!" message:@"You should recieve an email with a password reset link. Follow the instructions in the email to reset your password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alert show];
+}
+
+
 @end

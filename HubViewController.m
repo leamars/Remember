@@ -17,7 +17,9 @@
 
 @end
 
-@implementation HubViewController
+@implementation HubViewController {
+    NSString *name;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,9 +35,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    PFUser *currentUser = [PFUser currentUser];
+    name = [currentUser objectForKey:@"name"];
+    
+    self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome back, %@!", name];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]);
+    
+    self.gamesPlayed.text = [NSString stringWithFormat:@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]];
     
     [self resetNumOfGamesPlayedInDay];
 
@@ -76,15 +87,6 @@
     [userDefaults setInteger:0 forKey:@"GamesToday"];
 }
 
-- (NSManagedObjectContext *)managedObjectContext {
-    NSManagedObjectContext *context = nil;
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    return context;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -106,16 +108,22 @@
     
 }
 
-- (void)recieveData:(int) games; {
+- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon; {
     // get the amount od games played during the last session, and adds it to the total
     // amount of games played today
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     gamesToday = [userDefaults integerForKey:@"GamesToday"] + games;
+    //NSLog(@"games played today: %i", gamesToday);
     [userDefaults setInteger:gamesToday forKey:@"GamesToday"];
+    
+    //NSLog(@"Games won today: %i", gamesWon);
 }
 
+- (void) recieveDataForDailyeDare:(BOOL)dareCompleted {
+    
+}
 
 
 @end

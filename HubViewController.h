@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "FirstViewController.h"
 #import "SelectionViewController.h"
+#import "DailyDareViewController.h"
 
-@interface HubViewController : UIViewController <SelectionViewControllerDelegate>
+@interface HubViewController : UIViewController <SelectionViewControllerDelegate,DailyDareViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *numOfPlays;
-@property (strong, nonatomic) NSManagedObject *gameNum;
+@property (strong, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *gamesPlayed;
 
-- (void)recieveData:(int)games;
+- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon;
+- (void) recieveDataForDailyeDare:(BOOL)dareCompleted;
 
 @end

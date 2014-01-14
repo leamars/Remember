@@ -10,7 +10,7 @@
 
 @protocol SelectionViewControllerDelegate <NSObject>
 
-- (void)recieveData:(int) games;
+- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon;
 
 @end
 

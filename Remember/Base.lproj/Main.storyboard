@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBJ-p8-X6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="-44"/>
+            <point key="canvasLocation" x="153" y="-36"/>
         </scene>
         <!--Selection View Controller-->
         <scene sceneID="zGE-my-7Ms">
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uI-xP-inn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="-44"/>
+            <point key="canvasLocation" x="598" y="-36"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -208,14 +208,14 @@
                                 <rect key="frame" x="0.0" y="132" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" id="NAd-Ke-OcJ">
                                 <rect key="frame" x="0.0" y="191" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="sJM-DJ-YMe">
@@ -234,11 +234,11 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="OdK-0E-S1a" kind="push" id="rcf-S4-7JZ"/>
+                                    <action selector="signIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ifh-mp-FnF"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="222" verticalCompressionResistancePriority="218" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="150" image="Brain" id="3Of-Uf-y3q">
-                                <rect key="frame" x="83" y="287" width="154" height="163"/>
+                                <rect key="frame" x="83" y="315" width="154" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.4381739214" blue="0.44298070789999999" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -310,13 +310,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="sf8-gz-RKf"/>
                     <connections>
-                        <outlet property="emailTextField" destination="NAd-Ke-OcJ" id="lmy-ZK-Uvb"/>
-                        <outlet property="nameTextField" destination="O5x-fq-Fbs" id="b47-aW-9f8"/>
+                        <outlet property="passwordTextField" destination="NAd-Ke-OcJ" id="X5d-xq-d97"/>
+                        <outlet property="usernameTextField" destination="O5x-fq-Fbs" id="Xoh-Fq-Ahm"/>
+                        <segue destination="OdK-0E-S1a" kind="push" identifier="toHub" id="u9r-DE-7BV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="-44"/>
+            <point key="canvasLocation" x="-765" y="-36"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="hRO-gn-sUf">
@@ -364,7 +365,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Sorry, there's currently no settings to be set. Feel free to suggest things. ">
+                                    <fragment content="Reset your password by entering the email you signed up with below.">
                                         <attributes>
                                             <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
@@ -374,13 +375,66 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="unw-eY-EQR">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2441818265" green="0.61020233079999997" blue="0.63655931119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Log Out">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="22" name="HelveticaNeue-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="nuB-0n-7pv" eventType="touchUpInside" id="djm-SL-Tmj"/>
+                                    <action selector="signUp:" destination="Epp-cG-Hpo" eventType="touchUpInside" id="WMJ-ga-WSF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Ze6-eM-pjl">
+                                <rect key="frame" x="0.0" y="293" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2441818265" green="0.61020233079999997" blue="0.63655931119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Reset Password">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="22" name="HelveticaNeue-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="nuB-0n-7pv" eventType="touchUpInside" id="RDN-ZX-XRC"/>
+                                    <action selector="passwordReset:" destination="nuB-0n-7pv" eventType="touchUpInside" id="sxC-qa-OET"/>
+                                    <action selector="signUp:" destination="Epp-cG-Hpo" eventType="touchUpInside" id="BfR-4t-Ot9"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="20M-ri-hi1">
+                                <rect key="frame" x="0.0" y="234" width="320" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="phb-kk-IjB"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="20M-ri-hi1" id="Zyr-Ew-UcH"/>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="toSignIn" id="2rW-hO-q1f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFL-ai-Mo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="-715"/>
+            <point key="canvasLocation" x="607" y="-725"/>
         </scene>
         <!--Information View Controller - Informacije-->
         <scene sceneID="gle-li-HYe">
@@ -453,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXs-Iv-Par" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2095" y="-715"/>
+            <point key="canvasLocation" x="1053" y="-715"/>
         </scene>
         <!--Hub View Controller-->
         <scene sceneID="C18-3i-xEg">
@@ -521,6 +575,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="ogj-P5-uBG" kind="push" id="0sQ-aQ-Phu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="wTy-mw-YwA">
                                 <rect key="frame" x="0.0" y="507" width="320" height="61"/>
@@ -538,7 +595,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="Jg9-mQ-E1h" kind="push" id="MUY-xc-xBM"/>
+                                    <segue destination="SzK-2G-OUk" kind="modal" id="L8Q-eG-77b"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="sEf-7k-lmQ">
@@ -579,7 +636,7 @@
                                 </state>
                                 <connections>
                                     <action selector="back:" destination="ZRe-tc-Qf5" eventType="touchUpInside" id="eBi-Mu-yqB"/>
-                                    <segue destination="nuB-0n-7pv" kind="modal" id="MG2-Wo-dF7"/>
+                                    <segue destination="5EV-c7-wqU" kind="modal" id="MG2-Wo-dF7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MCh-Be-e5b">
@@ -610,18 +667,161 @@
                     </view>
                     <navigationItem key="navigationItem" id="9ve-Tb-Wm1"/>
                     <connections>
+                        <outlet property="gamesPlayed" destination="uNa-MG-eOV" id="ipS-mk-B6T"/>
                         <outlet property="numOfPlays" destination="uNa-MG-eOV" id="gly-V5-bEX"/>
+                        <outlet property="welcomeLabel" destination="AUl-3B-x3B" id="Oel-Ld-osw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n89-jg-F40" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="-44"/>
+            <point key="canvasLocation" x="-289" y="-42"/>
         </scene>
-        <!--View Controller-->
+        <!--Daily Dare View Controller-->
+        <scene sceneID="hBZ-yc-S16">
+            <objects>
+                <viewController id="ogj-P5-uBG" customClass="DailyDareViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cwh-kc-c70">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ext-as-97V">
+                                <rect key="frame" x="0.0" y="20" width="320" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="daily dare">
+                                        <attributes>
+                                            <color key="NSColor" red="0.024299179039512581" green="0.62035986966447798" blue="0.67568160076530615" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="30" name="Georgia-BoldItalic"/>
+                                            <font key="NSOriginalFont" size="44" name="Georgia-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.024299179039512581" green="0.62035986966447798" blue="0.67568160076530615" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="44" name="Georgia-BoldItalic"/>
+                                            <font key="NSOriginalFont" size="44" name="Georgia-BoldItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gxa-MM-yEe">
+                                <rect key="frame" x="10" y="35" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="ogj-P5-uBG" eventType="touchUpInside" id="Bq9-ae-x5g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rhf-3d-8dF">
+                                <rect key="frame" x="263" y="35" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="info">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vta-uZ-1Xc" kind="modal" id="3k5-FQ-Iy4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="cHk-Rq-OCX">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2441818265" green="0.61020233079999997" blue="0.63655931119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Accept Dare!">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="22" name="HelveticaNeue-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="acceptDare:" destination="ogj-P5-uBG" eventType="touchUpInside" id="akW-ug-yal"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eAu-81-nkI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6WX-RE-MxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-289" y="645"/>
+        </scene>
+        <!--Statistics Table View Controller-->
+        <scene sceneID="7jg-tu-cFy">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngH-Ng-dX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="SzK-2G-OUk" customClass="StatisticsTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FbJ-6M-F1d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-286" y="1351"/>
+        </scene>
+        <!--Daily Dare Info View Controller-->
+        <scene sceneID="kZp-E6-fAp">
+            <objects>
+                <viewController id="vta-uZ-1Xc" customClass="DailyDareInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DTD-4q-6bT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c7f-IQ-HeB">
+                                <rect key="frame" x="0.0" y="20" width="320" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="info">
+                                        <attributes>
+                                            <color key="NSColor" red="0.024299179039512581" green="0.62035986966447798" blue="0.67568160076530615" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="30" name="Georgia-BoldItalic"/>
+                                            <font key="NSOriginalFont" size="44" name="Georgia-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.024299179039512581" green="0.62035986966447798" blue="0.67568160076530615" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="44" name="Georgia-BoldItalic"/>
+                                            <font key="NSOriginalFont" size="44" name="Georgia-BoldItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IAT-ar-6sf">
+                                <rect key="frame" x="263" y="35" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="checkmark">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="done:" destination="vta-uZ-1Xc" eventType="touchUpInside" id="gIN-C6-bNU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iZb-Hs-LuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="643"/>
+        </scene>
+        <!--Sign Up View Controller-->
         <scene sceneID="496-27-1fk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nYS-jI-CN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Epp-cG-Hpo" sceneMemberID="viewController">
+                <viewController id="Epp-cG-Hpo" customClass="SignUpViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Snq-GD-iJw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -642,39 +842,32 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="drZ-mu-i7x">
-                                <rect key="frame" x="0.0" y="209" width="320" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="age" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="6GY-eT-cxS">
                                 <rect key="frame" x="0.0" y="150" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="eF3-ip-iVX">
                                 <rect key="frame" x="0.0" y="91" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="yjk-ao-3gU">
+                                <rect key="frame" x="0.0" y="209" width="320" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="55u-39-iQc">
                                 <rect key="frame" x="0.0" y="268" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="55u-39-iQc">
-                                <rect key="frame" x="0.0" y="327" width="320" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="nA3-Fr-YoW">
                                 <rect key="frame" x="0.0" y="507" width="320" height="61"/>
@@ -691,14 +884,141 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="signUp:" destination="Epp-cG-Hpo" eventType="touchUpInside" id="LpA-MG-tRX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="on2-IP-6j2"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="55u-39-iQc" id="8et-0J-2Xd"/>
+                        <outlet property="nameTextField" destination="eF3-ip-iVX" id="XZF-Oy-Bkh"/>
+                        <outlet property="passwordTextField" destination="yjk-ao-3gU" id="6hp-Lz-TTX"/>
+                        <outlet property="usernameTextField" destination="drZ-mu-i7x" id="Mul-ER-oIq"/>
+                        <segue destination="eZm-Cn-tZb" kind="push" identifier="toWelcome" id="5r0-lB-2IA"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nYS-jI-CN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="235" y="-715"/>
+            <point key="canvasLocation" x="-765" y="-725"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oxO-q7-sST">
+            <objects>
+                <viewController id="eZm-Cn-tZb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="biX-lQ-y88">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cDm-2L-ezO">
+                                <rect key="frame" x="0.0" y="29" width="320" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="welcome">
+                                        <attributes>
+                                            <color key="NSColor" red="0.024299179039512581" green="0.62035986966447798" blue="0.67568160076530615" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="42" name="Georgia-BoldItalic"/>
+                                            <font key="NSOriginalFont" size="44" name="Georgia-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pbj-7k-dTx">
+                                <rect key="frame" x="0.0" y="107" width="320" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Hi there, name. ">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="remember!">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="Georgia-BoldItalic"/>
+                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" will help you train your memory, and make sure you're kept on your toes. ">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ags-dY-5KE">
+                                <rect key="frame" x="0.0" y="223" width="320" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="It will help you exercise your working memory, and improve your immediate and long term recall.">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u0R-RL-PxA">
+                                <rect key="frame" x="0.0" y="339" width="320" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Ready to get started?">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Medium"/>
+                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="4wC-rp-0gf">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2441818265" green="0.61020233079999997" blue="0.63655931119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="I'm ready!">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="22" name="HelveticaNeue-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="signUp:" destination="Epp-cG-Hpo" eventType="touchUpInside" id="N8i-QQ-NPE"/>
+                                    <segue destination="OdK-0E-S1a" kind="push" id="xvt-VQ-Z4K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="B46-a6-Mj4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6YV-P7-DOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-312" y="-728"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Roc-1q-F5f">
@@ -716,38 +1036,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KmV-aS-JIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="235" y="-44"/>
+            <point key="canvasLocation" x="-1245" y="-36"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="B1L-1C-dsi">
+        <!--Navigation Controller-->
+        <scene sceneID="qbs-Cp-ISB">
             <objects>
-                <viewController id="Jg9-mQ-E1h" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6mf-ta-oWG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nY1-mO-sLZ">
-                                <rect key="frame" x="0.0" y="85" width="320" height="483"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Lz-Kq-n2q">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Lz-Kq-n2q" id="oDK-UA-3sc">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="MUP-uE-DDe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jmx-on-Zgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="5EV-c7-wqU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GZa-GN-xkt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nuB-0n-7pv" kind="relationship" relationship="rootViewController" id="CGc-2b-DXI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3c-VQ-kSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="153" y="-725"/>
         </scene>
     </scenes>
     <resources>
@@ -763,4 +1070,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="xvt-VQ-Z4K"/>
+        <segue reference="2rW-hO-q1f"/>
+    </inferredMetricsTieBreakers>
 </document>

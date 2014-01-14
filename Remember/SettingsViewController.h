@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+
 - (IBAction)done:(id)sender;
+- (IBAction)logOut:(id)sender;
+- (IBAction)passwordReset:(id)sender;
 
 @end

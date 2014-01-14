@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		34624E7E9D8C488C90D98C84 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E82B256FD68644899B704666 /* libPods.a */; };
 		8B1FCDA018846A1B009CEB25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FCD9F18846A1B009CEB25 /* ViewController.m */; };
-		8B1FCDA318846A41009CEB25 /* StatisticsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FCDA218846A41009CEB25 /* StatisticsTableViewController.m */; };
 		8B1FCDA61884726A009CEB25 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FCDA51884726A009CEB25 /* SignUpViewController.m */; };
 		8B1FCDAC1884817B009CEB25 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1FCDAB1884817B009CEB25 /* SettingsViewController.m */; };
+		8B30736E18854396003372B8 /* DailyDareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30736D18854396003372B8 /* DailyDareViewController.m */; };
+		8B30737118854458003372B8 /* DailyDareInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30737018854458003372B8 /* DailyDareInfoViewController.m */; };
+		8B30737418854557003372B8 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30737318854557003372B8 /* StatisticsViewController.m */; };
 		8B7CFDCA1883FFAD00FE6A38 /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CFDC91883FFAD00FE6A38 /* Option.m */; };
 		8BBC81A418802D1C004E9883 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC81A318802D1C004E9883 /* Foundation.framework */; };
 		8BBC81A618802D1C004E9883 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC81A518802D1C004E9883 /* CoreGraphics.framework */; };
@@ -56,12 +58,16 @@
 /* Begin PBXFileReference section */
 		8B1FCD9E18846A1B009CEB25 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8B1FCD9F18846A1B009CEB25 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8B1FCDA118846A41009CEB25 /* StatisticsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsTableViewController.h; sourceTree = "<group>"; };
-		8B1FCDA218846A41009CEB25 /* StatisticsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsTableViewController.m; sourceTree = "<group>"; };
 		8B1FCDA41884726A009CEB25 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		8B1FCDA51884726A009CEB25 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8B1FCDAA1884817B009CEB25 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8B1FCDAB1884817B009CEB25 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		8B30736C18854396003372B8 /* DailyDareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDareViewController.h; sourceTree = "<group>"; };
+		8B30736D18854396003372B8 /* DailyDareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDareViewController.m; sourceTree = "<group>"; };
+		8B30736F18854458003372B8 /* DailyDareInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyDareInfoViewController.h; sourceTree = "<group>"; };
+		8B30737018854458003372B8 /* DailyDareInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyDareInfoViewController.m; sourceTree = "<group>"; };
+		8B30737218854557003372B8 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		8B30737318854557003372B8 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		8B7CFDC81883FFAD00FE6A38 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
 		8B7CFDC91883FFAD00FE6A38 /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
 		8BBC81A018802D1C004E9883 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,8 +148,6 @@
 		8B1FCD9A188466D3009CEB25 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8B1FCDA118846A41009CEB25 /* StatisticsTableViewController.h */,
-				8B1FCDA218846A41009CEB25 /* StatisticsTableViewController.m */,
 				8B1FCD9E18846A1B009CEB25 /* ViewController.h */,
 				8B1FCD9F18846A1B009CEB25 /* ViewController.m */,
 				8BBC81E21880602E004E9883 /* SelectionViewController.h */,
@@ -160,6 +164,12 @@
 				8B1FCDA51884726A009CEB25 /* SignUpViewController.m */,
 				8B1FCDAA1884817B009CEB25 /* SettingsViewController.h */,
 				8B1FCDAB1884817B009CEB25 /* SettingsViewController.m */,
+				8B30736C18854396003372B8 /* DailyDareViewController.h */,
+				8B30736D18854396003372B8 /* DailyDareViewController.m */,
+				8B30736F18854458003372B8 /* DailyDareInfoViewController.h */,
+				8B30737018854458003372B8 /* DailyDareInfoViewController.m */,
+				8B30737218854557003372B8 /* StatisticsViewController.h */,
+				8B30737318854557003372B8 /* StatisticsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -393,13 +403,15 @@
 				8BBC81DE1880404B004E9883 /* InformationViewController.m in Sources */,
 				8B7CFDCA1883FFAD00FE6A38 /* Option.m in Sources */,
 				8B1FCDA61884726A009CEB25 /* SignUpViewController.m in Sources */,
+				8B30737418854557003372B8 /* StatisticsViewController.m in Sources */,
 				8B1FCDAC1884817B009CEB25 /* SettingsViewController.m in Sources */,
 				8BBC81B418802D1C004E9883 /* AppDelegate.m in Sources */,
 				8B1FCDA018846A1B009CEB25 /* ViewController.m in Sources */,
-				8B1FCDA318846A41009CEB25 /* StatisticsTableViewController.m in Sources */,
 				8BBC81E7188283B6004E9883 /* HubViewController.m in Sources */,
 				8BBC81EA1882A87A004E9883 /* Model.xcdatamodeld in Sources */,
 				8BBC81B018802D1C004E9883 /* main.m in Sources */,
+				8B30737118854458003372B8 /* DailyDareInfoViewController.m in Sources */,
+				8B30736E18854396003372B8 /* DailyDareViewController.m in Sources */,
 				8BBC81DB18803559004E9883 /* FirstViewController.m in Sources */,
 				8BBC81E41880602E004E9883 /* SelectionViewController.m in Sources */,
 			);
