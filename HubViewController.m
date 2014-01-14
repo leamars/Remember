@@ -46,7 +46,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]);
     
-    self.gamesPlayed.text = [NSString stringWithFormat:@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]];
+    self.gamesPlayed.text = [NSString stringWithFormat:@"%i", [userDefaults integerForKey:@"GamesToday"]];
     
     [self resetNumOfGamesPlayedInDay];
 

@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Spomin" id="1zZ-Bz-pmK">
                         <barButtonItem key="rightBarButtonItem" title="Info" id="CIg-67-Imj"/>
@@ -168,7 +168,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ULn-uP-ZEb"/>
                     <connections>
@@ -306,7 +306,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="sf8-gz-RKf"/>
                     <connections>
@@ -338,7 +338,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ib6-BX-ma3">
-                                <rect key="frame" x="0.0" y="28" width="320" height="57"/>
+                                <rect key="frame" x="0.0" y="35" width="320" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="settings">
@@ -392,7 +392,6 @@
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="nuB-0n-7pv" eventType="touchUpInside" id="djm-SL-Tmj"/>
-                                    <action selector="signUp:" destination="Epp-cG-Hpo" eventType="touchUpInside" id="WMJ-ga-WSF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Ze6-eM-pjl">
@@ -411,9 +410,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="logOut:" destination="nuB-0n-7pv" eventType="touchUpInside" id="RDN-ZX-XRC"/>
                                     <action selector="passwordReset:" destination="nuB-0n-7pv" eventType="touchUpInside" id="sxC-qa-OET"/>
-                                    <action selector="signUp:" destination="Epp-cG-Hpo" eventType="touchUpInside" id="BfR-4t-Ot9"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="37" id="20M-ri-hi1">
@@ -424,7 +421,7 @@
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="phb-kk-IjB"/>
                     <connections>
@@ -444,22 +441,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n0y-nP-dz4">
-                                <rect key="frame" x="30" y="76" width="260" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Pozdravljen Ivan, zdlega, da si se vceraj mar izkazal! Dosegel si namrec najvecje stevilo tock, kar si jih kdaj impel! Bravo. ">
-                                        <attributes>
-                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W2t-h0-hHk">
-                                <rect key="frame" x="39" y="199" width="243" height="109"/>
+                                <rect key="frame" x="39" y="109" width="243" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Igra spomin poteka takole. Vsako jutro ob te bo aplikacija ob doloceni uri pozvala k izzivu. Za boljsi spomin sprejmi in izpolni izziv!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -498,8 +481,19 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="kRt-UT-TTO">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2441818265" green="0.61020233079999997" blue="0.63655931119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
+                                <connections>
+                                    <action selector="startWalkthrough" destination="RxR-SU-EWn" eventType="touchUpInside" id="fnd-z8-848"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Informacije" id="Cux-OU-WeZ">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="JmB-0f-4lq"/>
@@ -508,6 +502,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXs-Iv-Par" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1053" y="-715"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="MaD-Hn-0ab">
+            <objects>
+                <pageViewController storyboardIdentifier="InfoPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="S3h-Of-Z9M" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0UL-W2-KEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1522" y="-716"/>
+        </scene>
+        <!--Info Page Content View Controller-->
+        <scene sceneID="aZi-qg-YNM">
+            <objects>
+                <viewController storyboardIdentifier="InfoPageContentViewController" id="2E2-bd-LFr" customClass="InfoPageContentViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Rp-SS-2Um">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lrl-bF-ZYo">
+                                <rect key="frame" x="8" y="374" width="304" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="What action you're taking!">
+                                        <attributes>
+                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1Ro-gw-YtS">
+                                <rect key="frame" x="58" y="0.0" width="205" height="366"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionTaken" destination="lrl-bF-ZYo" id="q0A-Dt-7Ro"/>
+                        <outlet property="screen" destination="1Ro-gw-YtS" id="3kG-2a-hyE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t5b-jq-76v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1526" y="-50"/>
         </scene>
         <!--Hub View Controller-->
         <scene sceneID="C18-3i-xEg">
@@ -532,13 +572,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uNa-MG-eOV">
-                                <rect key="frame" x="13" y="296" width="294" height="62"/>
+                                <rect key="frame" x="13" y="296" width="163" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Games played today: xxxx">
+                                    <fragment content="Games played today: ">
                                         <attributes>
                                             <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
                                             <font key="NSOriginalFont" size="17" name="HelveticaNeue-Light"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
@@ -550,10 +590,10 @@
                                 <rect key="frame" x="13" y="344" width="267" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Daily dare: completed">
+                                    <fragment content="Daily dare: ">
                                         <attributes>
                                             <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
@@ -662,13 +702,41 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Xa-bx-a2u">
+                                <rect key="frame" x="179" y="317" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="xxxx">
+                                        <attributes>
+                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KCX-re-g9J">
+                                <rect key="frame" x="63" y="346" width="146" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Activated">
+                                        <attributes>
+                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="9ve-Tb-Wm1"/>
                     <connections>
-                        <outlet property="gamesPlayed" destination="uNa-MG-eOV" id="ipS-mk-B6T"/>
-                        <outlet property="numOfPlays" destination="uNa-MG-eOV" id="gly-V5-bEX"/>
+                        <outlet property="dailyDareState" destination="KCX-re-g9J" id="Gsf-Qm-AgF"/>
+                        <outlet property="gamesPlayed" destination="1Xa-bx-a2u" id="tsW-gj-Bjv"/>
                         <outlet property="welcomeLabel" destination="AUl-3B-x3B" id="Oel-Ld-osw"/>
                     </connections>
                 </viewController>
@@ -685,7 +753,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ext-as-97V">
-                                <rect key="frame" x="0.0" y="20" width="320" height="57"/>
+                                <rect key="frame" x="0.0" y="35" width="320" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="daily dare">
@@ -747,7 +815,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eAu-81-nkI"/>
                 </viewController>
@@ -778,7 +846,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c7f-IQ-HeB">
-                                <rect key="frame" x="0.0" y="20" width="320" height="57"/>
+                                <rect key="frame" x="0.0" y="35" width="320" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="info">
@@ -811,7 +879,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZb-Hs-LuK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -889,7 +957,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="on2-IP-6j2"/>
                     <connections>
@@ -1012,7 +1080,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8498769598" green="0.93786801740000003" blue="0.94911910079999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="B46-a6-Mj4"/>
                 </viewController>

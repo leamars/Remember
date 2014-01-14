@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InfoPageContentViewController.h"
 
-@interface InformationViewController : UIViewController
+@interface InformationViewController : UIViewController <UIPageViewControllerDataSource>
+
+@property (nonatomic) NSInteger index;
 
 - (IBAction)done:(id)sender;
+- (IBAction)startWalkthrough;
+
+@property (strong, nonatomic) UIPageViewController *infoPageViewController;
+@property (strong, nonatomic) NSArray *pageActions;
+@property (strong, nonatomic) NSArray *pageImages;
 
 @end

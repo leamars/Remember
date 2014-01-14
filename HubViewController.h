@@ -13,9 +13,9 @@
 
 @interface HubViewController : UIViewController <SelectionViewControllerDelegate,DailyDareViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *numOfPlays;
 @property (strong, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *gamesPlayed;
+@property (strong, nonatomic) IBOutlet UILabel *dailyDareState;
 
 - (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon;
 - (void) recieveDataForDailyeDare:(BOOL)dareCompleted;

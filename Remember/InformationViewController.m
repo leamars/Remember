@@ -27,6 +27,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.pageActions = @[@"One", @"Two", @"Three", @"Four"];
+    self.pageImages = @[@"page1", @"page2", @"page3", @"page4"];
+    
+    self.infoPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoPageViewController"];
+    //NSLog(@"Data source is: %@", self.infoPageViewController)
+    self.infoPageViewController.dataSource = self;
+    
+    InfoPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
+    
+    NSArray *viewControllers = @[startingViewController];
+    [self.infoPageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    self.infoPageViewController.view.frame = CGRectMake(0, 90, self.view.frame.size.width, self.view.frame.size.height - 110);
+    
+    [self addChildViewController:self.infoPageViewController];
+    [self.view addSubview:self.infoPageViewController.view];
+    [self.infoPageViewController didMoveToParentViewController:self];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,4 +57,69 @@
 - (IBAction)done:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - Page View Controller Methods
+
+- (IBAction)startWalkthrough {
+    InfoPageContentViewController *startingViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = @[startingViewController];
+    [self.infoPageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+    [self viewDidLoad];
+}
+
+- (InfoPageContentViewController *) viewControllerAtIndex:(NSUInteger) index {
+    if (([self.pageActions count] == 0) || (index >= [self.pageActions count])) {
+        return nil;
+    }
+    
+    NSLog(@"Index in the what to set for each controller is: %i", index);
+    
+    InfoPageContentViewController *ipcvc = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoPageContentViewController"];
+    
+    ipcvc.action = self.pageActions[index];
+    ipcvc.imageFile = self.pageImages[index];
+    ipcvc.pageIndex = index;
+    
+    return ipcvc;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = ((InfoPageContentViewController *) viewController).pageIndex;
+    
+    if (index == 0 || (index == NSNotFound)) {
+        return nil;
+    }
+    
+    index--;
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = ((InfoPageContentViewController *) viewController).pageIndex;
+    
+    if (index == NSNotFound) {
+        return nil;
+    }
+    
+    index++;
+    
+    if (index == [self.pageActions count]) {
+        return [self viewControllerAtIndex:0];
+    }
+    
+    return [self viewControllerAtIndex:index];
+}
+
+// present the dots
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    return [self.pageActions count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    return 0;
+}
+
 @end
