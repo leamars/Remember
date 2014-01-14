@@ -648,7 +648,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="ogj-P5-uBG" kind="push" id="0sQ-aQ-Phu"/>
+                                    <segue destination="ogj-P5-uBG" kind="push" identifier="dailyDareSegue" id="0sQ-aQ-Phu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="wTy-mw-YwA">
@@ -872,25 +872,35 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YNT-wU-AcI">
-                                <rect key="frame" x="202" y="87" width="133" height="89"/>
+                                <rect key="frame" x="202" y="86" width="133" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="shape!">
                                         <attributes>
                                             <color key="NSColor" red="0.28581393494897955" green="0.28581393494897955" blue="0.28581393494897955" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="HelveticaNeue-Thin"/>
+                                            <font key="NSFont" size="26" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="suR-x5-id4">
+                                <rect key="frame" x="85" y="245" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eAu-81-nkI"/>
                     <connections>
                         <outlet property="attributeLabel" destination="YNT-wU-AcI" id="mha-KA-Qmb"/>
+                        <outlet property="dareImage" destination="suR-x5-id4" id="KqW-GK-KgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WX-RE-MxU" userLabel="First Responder" sceneMemberID="firstResponder"/>

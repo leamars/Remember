@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Option.h"
 
 @protocol DailyDareViewControllerDelegate <NSObject>
 
@@ -18,6 +19,8 @@
 
 @property (nonatomic, strong) id <DailyDareViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UILabel *attributeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *dareImage;
+@property (strong, nonatomic) Option *recievedDailyOption;
 
 - (IBAction)back:(id)sender;
 - (IBAction)acceptDare:(id)sender;

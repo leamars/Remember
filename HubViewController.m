@@ -9,6 +9,8 @@
 #import "HubViewController.h"
 #import "FirstViewController.h"
 #import <Parse/Parse.h>
+#import "Option.h"
+#import "DailyDareViewController.h"
 
 @interface HubViewController () {
     int num;
@@ -19,6 +21,12 @@
 
 @implementation HubViewController {
     NSString *name;
+    NSArray *theWords;
+    NSArray *theShapes;
+    int randomWord;
+    int randomShape;
+    UIColor *randomColor;
+    Option *dailyOption;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,6 +47,10 @@
     name = [currentUser objectForKey:@"name"];
     
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome back, %@!", name];
+    
+    theWords = [[NSMutableArray alloc] initWithObjects:@"bird", @"snake", @"table", @"keys", @"picture", @"radio", @"folder", @"hanger", @"post", @"cucumber", @"elephant", @"crocodile", @"plastic", @"mortgage", @"sinister", @"sleep", @"park", @"prison", @"level", @"smile", @"stop", @"spot", @"elastic", @"gorge", @"mister", @"slap", @"fonder", @"hamper", @"rake", @"lake", @"letter", @"better", @"dark", @"eagle", @"eager", nil];
+    
+    theShapes = [[NSMutableArray alloc] initWithObjects:@"circleEmptyReverse", @"triangleEmptyReverse", @"squareEmptyReverse", @"circleFullReverse", @"triangleFullReverse", @"squareFullReverse", nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -48,15 +60,12 @@
     
     self.gamesPlayed.text = [NSString stringWithFormat:@"%i", [userDefaults integerForKey:@"GamesToday"]];
     
+    [self setUpDailyDare];
     [self resetNumOfGamesPlayedInDay];
 
 }
 
-- (void) resetNumOfGamesPlayedInDay {
-    
-    // get the current time, to know when the next day starts to reset the amount
-    // of total games played during  the day back to 0
-    
+- (float)timeToDailyReset {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *today = [NSDate date];
     NSDateComponents *components = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:today];
@@ -66,6 +75,16 @@
     int seconds = [components second];
     
     float timeToReset = 24*60*60 - hour*60*60 - minute*60 - seconds;
+
+    return timeToReset;
+}
+
+- (void) resetNumOfGamesPlayedInDay {
+    
+    // get the current time, to know when the next day starts to reset the amount
+    // of total games played during  the day back to 0
+    
+    float timeToReset = [self timeToDailyReset];
     
     [NSTimer scheduledTimerWithTimeInterval:timeToReset
                                      target:self
@@ -85,6 +104,39 @@
 - (void) setGamesPlayedToZeroOnNewDay {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setInteger:0 forKey:@"GamesToday"];
+    [userDefaults setBool:YES forKey:@"firstRunOfDay"];
+}
+
+- (void) setUpDailyDare {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL firstRunOfDay = [userDefaults boolForKey:@"firstRunOfDay"];
+    if (firstRunOfDay) {
+        [self setUpDailyOption];
+    }
+}
+
+- (Option *)setUpDailyOption {
+    
+    NSArray *bools = 
+    
+    randomWord = arc4random()% ([theWords count] - 1);
+    randomShape = arc4random()% ([theShapes count] - 1);
+    randomColor = [self randomColor];
+    
+    dailyOption = [[Option alloc] optionWithShape:[UIImage imageNamed:theShapes[randomShape]] andWord:theWords[randomWord] andColor:randomColor];
+    
+    return dailyOption;
+}
+
+- (UIColor *)randomColor
+{
+    CGFloat hue = (arc4random() % 256 / 256.0f);
+    CGFloat saturation = (arc4random() % 128 / 256.0f) + 0.5f;
+    CGFloat brightness = (arc4random() % 128 / 256.0f) + 0.5f;
+    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1.0f];
+    
+    return color;
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,7 +155,13 @@
         if (firstRunOfDay) {
             fvc.games = num;
         }
+    }
     
+    if ([segue.identifier isEqualToString:@"dailyDareSegue"]) {
+        DailyDareViewController *ddvc = [segue destinationViewController];
+        
+        ddvc.recievedDailyOption = dailyOption;
+        NSLog(@"Daily options is: %@", [dailyOption description]);
     }
     
 }
