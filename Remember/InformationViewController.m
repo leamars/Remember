@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.pageActions = @[@"One", @"Two", @"Three", @"Four"];
+    self.pageActions = @[@"Remember the specified attribute of the object shown - SHAPE.", @"If you don't like the current task, refresh to get a new one.", @"Press play to be presented with three choices.", @"Pick the correct one based on the specified attribute. If the attribute is shape, there might be more than one correct answer."];
     self.pageImages = @[@"page1", @"page2", @"page3", @"page4"];
     
     self.infoPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoPageViewController"];

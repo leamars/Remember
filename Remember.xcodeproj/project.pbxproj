@@ -15,6 +15,7 @@
 		8B30737118854458003372B8 /* DailyDareInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30737018854458003372B8 /* DailyDareInfoViewController.m */; };
 		8B30737418854557003372B8 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30737318854557003372B8 /* StatisticsViewController.m */; };
 		8B30737A18856C2F003372B8 /* InfoPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30737918856C2F003372B8 /* InfoPageContentViewController.m */; };
+		8B3073851885A185003372B8 /* PasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3073841885A185003372B8 /* PasswordResetViewController.m */; };
 		8B7CFDCA1883FFAD00FE6A38 /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7CFDC91883FFAD00FE6A38 /* Option.m */; };
 		8BBC81A418802D1C004E9883 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC81A318802D1C004E9883 /* Foundation.framework */; };
 		8BBC81A618802D1C004E9883 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC81A518802D1C004E9883 /* CoreGraphics.framework */; };
@@ -71,6 +72,8 @@
 		8B30737318854557003372B8 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		8B30737818856C2F003372B8 /* InfoPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoPageContentViewController.h; sourceTree = "<group>"; };
 		8B30737918856C2F003372B8 /* InfoPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoPageContentViewController.m; sourceTree = "<group>"; };
+		8B3073831885A185003372B8 /* PasswordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetViewController.h; sourceTree = "<group>"; };
+		8B3073841885A185003372B8 /* PasswordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetViewController.m; sourceTree = "<group>"; };
 		8B7CFDC81883FFAD00FE6A38 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Option.h; sourceTree = "<group>"; };
 		8B7CFDC91883FFAD00FE6A38 /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Option.m; sourceTree = "<group>"; };
 		8BBC81A018802D1C004E9883 /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +178,8 @@
 				8B30737318854557003372B8 /* StatisticsViewController.m */,
 				8B30737818856C2F003372B8 /* InfoPageContentViewController.h */,
 				8B30737918856C2F003372B8 /* InfoPageContentViewController.m */,
+				8B3073831885A185003372B8 /* PasswordResetViewController.h */,
+				8B3073841885A185003372B8 /* PasswordResetViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 				8BBC81B018802D1C004E9883 /* main.m in Sources */,
 				8B30737118854458003372B8 /* DailyDareInfoViewController.m in Sources */,
 				8B30736E18854396003372B8 /* DailyDareViewController.m in Sources */,
+				8B3073851885A185003372B8 /* PasswordResetViewController.m in Sources */,
 				8BBC81DB18803559004E9883 /* FirstViewController.m in Sources */,
 				8BBC81E41880602E004E9883 /* SelectionViewController.m in Sources */,
 			);

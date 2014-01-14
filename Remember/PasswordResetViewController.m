@@ -1,21 +1,21 @@
 //
-//  SettingsViewController.m
+//  PasswordResetViewController.m
 //  Remember
 //
-//  Created by Lea Marolt on 1/13/14.
+//  Created by Lea Marolt on 1/14/14.
 //  Copyright (c) 2014 Lea Marolt Sonnenschein. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "PasswordResetViewController.h"
 #import <Parse/Parse.h>
 
-@interface SettingsViewController ()
+@interface PasswordResetViewController () {
+    NSString *email;
+}
 
 @end
 
-@implementation SettingsViewController {
-    NSString *email;
-}
+@implementation PasswordResetViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,9 +30,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
     self.emailTextField.delegate = self;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,12 +49,6 @@
 
 - (IBAction)done:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)logOut:(id)sender {
-    
-    [PFUser logOut];    
-    [self performSegueWithIdentifier:@"toSignIn" sender:self];
 }
 
 - (IBAction)passwordReset:(id)sender {

@@ -17,6 +17,7 @@
 @interface DailyDareViewController : UIViewController
 
 @property (nonatomic, strong) id <DailyDareViewControllerDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UILabel *attributeLabel;
 
 - (IBAction)back:(id)sender;
 - (IBAction)acceptDare:(id)sender;
