@@ -27,6 +27,15 @@
     int randomShape;
     UIColor *randomColor;
     Option *dailyOption;
+    NSNumber *shapeWithShape;
+    NSNumber *shapeWithColor;
+    NSNumber *wordWithText;
+    NSNumber *wordWithColor;
+    NSMutableArray *optionsArr;
+    BOOL chosenOption;
+    CGFloat hue;
+    CGFloat brightness;
+    CGFloat saturation;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +60,13 @@
     theWords = [[NSMutableArray alloc] initWithObjects:@"bird", @"snake", @"table", @"keys", @"picture", @"radio", @"folder", @"hanger", @"post", @"cucumber", @"elephant", @"crocodile", @"plastic", @"mortgage", @"sinister", @"sleep", @"park", @"prison", @"level", @"smile", @"stop", @"spot", @"elastic", @"gorge", @"mister", @"slap", @"fonder", @"hamper", @"rake", @"lake", @"letter", @"better", @"dark", @"eagle", @"eager", nil];
     
     theShapes = [[NSMutableArray alloc] initWithObjects:@"circleEmptyReverse", @"triangleEmptyReverse", @"squareEmptyReverse", @"circleFullReverse", @"triangleFullReverse", @"squareFullReverse", nil];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [defaults dictionaryRepresentation];
+    
+    NSLog(@"My defaults: %@", dict);
+    
+    [self setUpDailyDare];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -59,10 +75,6 @@
     NSLog(@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]);
     
     self.gamesPlayed.text = [NSString stringWithFormat:@"%i", [userDefaults integerForKey:@"GamesToday"]];
-    
-    [self setUpDailyDare];
-    [self resetNumOfGamesPlayedInDay];
-
 }
 
 - (float)timeToDailyReset {
@@ -112,31 +124,78 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL firstRunOfDay = [userDefaults boolForKey:@"firstRunOfDay"];
     if (firstRunOfDay) {
-        [self setUpDailyOption];
+        [self saveInfoInUserDefaults];
     }
+    
+    [self setUpDailyOption];
+
 }
 
 - (Option *)setUpDailyOption {
     
-    NSArray *bools = 
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    randomWord = arc4random()% ([theWords count] - 1);
-    randomShape = arc4random()% ([theShapes count] - 1);
-    randomColor = [self randomColor];
+    int shape = [userDefaults integerForKey:@"randomShape"];
+    int word = [userDefaults integerForKey:@"randomWord"];
     
-    dailyOption = [[Option alloc] optionWithShape:[UIImage imageNamed:theShapes[randomShape]] andWord:theWords[randomWord] andColor:randomColor];
+    int iH = [userDefaults integerForKey:@"hue"];
+    int iS = [userDefaults integerForKey:@"saturation"];
+    int iB = [userDefaults integerForKey:@"brightness"];
+    
+    CGFloat h = iH / 255.0;
+    CGFloat s = iS / 255.0;
+    CGFloat b = iB / 255.0;
+    
+    UIColor *color = [UIColor colorWithHue:h saturation:s brightness:b alpha:1.0];
+    
+    dailyOption = [[Option alloc] optionWithShape:[UIImage imageNamed:theShapes[shape]] andWord:theWords[word] andColor:color];
     
     return dailyOption;
 }
 
 - (UIColor *)randomColor
 {
-    CGFloat hue = (arc4random() % 256 / 256.0f);
-    CGFloat saturation = (arc4random() % 128 / 256.0f) + 0.5f;
-    CGFloat brightness = (arc4random() % 128 / 256.0f) + 0.5f;
+    hue = (arc4random() % 256 / 256.0f);
+    saturation = (arc4random() % 128 / 256.0f) + 0.5f;
+    brightness = (arc4random() % 128 / 256.0f) + 0.5f;
     UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1.0f];
     
     return color;
+}
+
+- (void) saveInfoInUserDefaults {
+    shapeWithShape = [NSNumber numberWithBool:YES];
+    shapeWithColor = [NSNumber numberWithBool:YES];
+    wordWithText = [NSNumber numberWithBool:YES];
+    wordWithColor = [NSNumber numberWithBool:YES];
+    
+    optionsArr = [[NSMutableArray alloc] init];
+    
+    [optionsArr addObject:shapeWithColor];
+    [optionsArr addObject:shapeWithShape];
+    [optionsArr addObject:wordWithColor];
+    [optionsArr addObject:wordWithText];
+    
+    randomWord = arc4random()% ([theWords count] - 1);
+    randomShape = arc4random()% ([theShapes count] - 1);
+    randomColor = [self randomColor];
+    
+    CGFloat hFloat,sFloat,bFloat,aFloat;
+    [randomColor getHue:&hFloat saturation:&sFloat brightness:&bFloat alpha:&aFloat];
+    
+    int h, s, b;
+    
+    h = (int)(255.0 * hFloat);
+    s = (int)(255.0 * sFloat);
+    b = (int)(255.0 * bFloat);
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger:randomWord forKey:@"randomWord"];
+    [userDefaults setInteger:randomShape forKey:@"randomShape"];
+    [userDefaults setInteger:h forKey:@"hue"];
+    [userDefaults setInteger:s forKey:@"saturation"];
+    [userDefaults setInteger:b forKey:@"brightness"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,7 +203,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
@@ -161,7 +219,7 @@
         DailyDareViewController *ddvc = [segue destinationViewController];
         
         ddvc.recievedDailyOption = dailyOption;
-        NSLog(@"Daily options is: %@", [dailyOption description]);
+        ddvc.selectedOption = chosenOption;
     }
     
 }

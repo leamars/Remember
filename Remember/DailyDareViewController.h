@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *attributeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *dareImage;
 @property (strong, nonatomic) Option *recievedDailyOption;
+@property (nonatomic) BOOL selectedOption;
 
 - (IBAction)back:(id)sender;
 - (IBAction)acceptDare:(id)sender;
