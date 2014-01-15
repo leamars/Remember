@@ -309,6 +309,7 @@
         // send information to delegate - HubViewController
         HubViewController *hvc = [[HubViewController alloc] init];
         self.gamesPlayed++;
+        NSLog(@"I played %i many games", self.gamesPlayed++);
         [hvc recieveDataForGamesPlayed:self.gamesPlayed andGamesWon:won];
         
         NSArray *viewControllers = [self.navigationController viewControllers];

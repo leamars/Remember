@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *gamesPlayed;
 @property (strong, nonatomic) IBOutlet UILabel *dailyDareState;
 @property (strong, nonatomic) IBOutlet UIImageView *smileyView;
+@property BOOL acceptedDare;
 
 - (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon;
 - (void) recieveDataForDailyeDare:(BOOL)dareAccepted;

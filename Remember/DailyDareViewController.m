@@ -40,13 +40,14 @@
     theShapes = [[NSMutableArray alloc] initWithObjects:@"circleEmptyReverse", @"triangleEmptyReverse", @"squareEmptyReverse", @"circleFullReverse", @"triangleFullReverse", @"squareFullReverse", nil];
 
     NSLog(self.selectedOption ? @"Yes" : @"No");
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self setUpDare];
+    [self setUpFirstDareView];
 }
 
-- (void)setUpDare {
+- (void)setUpFirstDareView {
     
     // set up random choices for color, word, shape
     
@@ -54,13 +55,44 @@
     
     // randomly select what kind of a challenge it will be
     
-    // set up the challenge image
-    self.dareImage.backgroundColor = dailyOption.color;
-    [self.dareImage setBackgroundImage:dailyOption.shape forState:UIControlStateNormal];
+    if (self.recievedDailyOption) {
+        
+        if (self.selectedOption) {
+            
+            // set up the challenge image
+            self.dareImage.backgroundColor = dailyOption.color;
+            [self.dareImage setBackgroundImage:dailyOption.shape forState:UIControlStateNormal];
+            
+            // set up the label
+            self.attributeLabel.text = @"shape";
+            self.attributeTwoLabel.text = @"color!";
+        }
+        
+        else if (!self.selectedOption) {
+            
+            CGRect frame = [self.dareImage frame];
+            frame.origin.x -= 50;
+            frame.size.width +=100;
+            [self.dareImage setFrame:frame];
+            
+            self.dareImage.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            self.dareImage.titleLabel.textAlignment = NSTextAlignmentCenter;
+            
+            [self.dareImage setTitleColor:dailyOption.color forState:UIControlStateNormal];
+            [self.dareImage setTitle:dailyOption.word forState:UIControlStateNormal];
+            
+            self.attributeLabel.text = @"text";
+            self.attributeTwoLabel.text = @"color!";
+        }
+        
+        [self.acceptedButton setTitle:@"Accept Dare!" forState:UIControlStateNormal];
+        [self.acceptedSpiel setHidden:YES];
+        [self.goodLuck setHidden:YES];
+    }
     
-    // set up the label
-    self.attributeLabel.text = @"shape";
-    self.attributeTwoLabel.text = @"color!";
+    else if (!self.recievedDailyOption) {
+        [self lockedView];
+    }
 
 }
 
@@ -87,6 +119,16 @@
 
 - (void) lockedView {
     
+    self.attributeTwoLabel.text = nil;
+    self.attributeLabel.text = nil;
+    self.dareImage.imageView.image = nil;
+    self.rememberLabel.text = nil;
+    self.andLabel.text = nil;
+    self.acceptedButton.enabled = NO;
+    [self.acceptedButton setTitle:@"Dare Activated!" forState:UIControlStateDisabled];
+    [self.acceptedButton setTitle:@"Dare Activated!" forState:UIControlStateNormal];
+    [self.acceptedSpiel setHidden:NO];
+    [self.goodLuck setHidden:NO];
 }
 
 - (void) optionsView {
@@ -94,8 +136,9 @@
 }
 
 - (IBAction)acceptDare:(id)sender {
+    
     HubViewController *hvc = [[HubViewController alloc] init];
-    [hvc recieveDataForDailyeDare:YES];
+    [self.delegate recieveDataForDailyeDare:YES];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];

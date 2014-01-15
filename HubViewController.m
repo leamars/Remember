@@ -34,7 +34,7 @@
     CGFloat hue;
     CGFloat brightness;
     CGFloat saturation;
-    BOOL acceptedDare;
+    NSString *str;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,36 +64,44 @@
     NSDictionary *dict = [defaults dictionaryRepresentation];
     
     NSLog(@"My defaults: %@", dict);
-    
-    if (!acceptedDare) {
-        [self setUpDailyDare];
-    }
-    
 
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    
+    [self winkyToSmiely];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.0
+                                     target:self
+                                   selector:@selector(animateSmiley)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.3
+                                     target:self
+                                   selector:@selector(smileyToWinky)
+                                   userInfo:nil
+                                    repeats:NO];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]);
     
     self.gamesPlayed.text = [NSString stringWithFormat:@"%i", [userDefaults integerForKey:@"GamesToday"]];
     
-    [self animateSmiley];
-    
-    [NSTimer scheduledTimerWithTimeInterval:2.8
-                                     target:self
-                                   selector:@selector(smileyToWinky)
-                                   userInfo:nil
-                                    repeats:NO];
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    self.smileyView.image = [UIImage imageNamed:@"smiley"];
+    self.acceptedDare = [userDefaults boolForKey:@"dareAccepted"];
+    self.dailyDareState.text = @"Accepted";
 }
 
 - (void) smileyToWinky {
     self.smileyView.image = [UIImage imageNamed:@"winky"];
+}
+
+- (void) winkyToSmiely {
+    self.smileyView.image = [UIImage imageNamed:@"smiley"];
 }
 
 - (float)timeToDailyReset {
@@ -113,7 +121,7 @@
 - (void) animateSmiley {
     CABasicAnimation*    layerAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     layerAnimation.duration = 0.8;
-    layerAnimation.beginTime = CACurrentMediaTime() + 2;
+    layerAnimation.beginTime = CACurrentMediaTime() + 1.5;
     layerAnimation.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
     layerAnimation.timingFunction = [CAMediaTimingFunction
                                      functionWithName:kCAMediaTimingFunctionLinear];
@@ -186,6 +194,8 @@
     
     dailyOption = [[Option alloc] optionWithShape:[UIImage imageNamed:theShapes[shape]] andWord:theWords[word] andColor:color];
     
+    NSLog(@"MY DAILY OPTION IS: %@", [dailyOption description]);
+    
     return dailyOption;
 }
 
@@ -207,6 +217,9 @@
     
     [optionsArr addObject:shapeWithShapeAndColor];
     [optionsArr addObject:wordWithTextAndColor];
+    
+    int choseOption = arc4random() % 1;
+    chosenOption = [optionsArr[choseOption] boolValue];
     
     randomWord = arc4random()% ([theWords count] - 1);
     randomShape = arc4random()% ([theShapes count] - 1);
@@ -241,6 +254,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) recieveDataForDailyeDare:(BOOL)dareAccepted {
+    self.acceptedDare = YES;
+    self.dailyDareState.text = @"Accepted";
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:YES forKey:@"dareAccepted"];
+    
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
         FirstViewController *fvc = [segue destinationViewController];
@@ -255,8 +277,17 @@
     if ([segue.identifier isEqualToString:@"dailyDareSegue"]) {
         DailyDareViewController *ddvc = [segue destinationViewController];
         
-        ddvc.recievedDailyOption = dailyOption;
-        ddvc.selectedOption = chosenOption;
+        ddvc.delegate = self;
+        
+        // is user hasn't clicked on accept dare, set it up, otherwise set up emptyView
+        if (!self.acceptedDare) {
+            
+            [self setUpDailyDare];
+            
+            ddvc.recievedDailyOption = dailyOption;
+            ddvc.selectedOption = chosenOption;
+        }
+
     }
     
 }
@@ -274,9 +305,6 @@
     //NSLog(@"Games won today: %i", gamesWon);
 }
 
-- (void) recieveDataForDailyeDare:(BOOL)dareAccepted {
-    acceptedDare = dareAccepted;
-}
 
 
 @end
