@@ -10,6 +10,8 @@
 
 @interface SettingsViewController : UIViewController <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *emailLabel;
 
 - (IBAction)done:(id)sender;
 - (IBAction)logOut:(id)sender;

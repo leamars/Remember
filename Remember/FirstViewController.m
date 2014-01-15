@@ -152,6 +152,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// TO DO: Change animation to filp instead of push
 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
 
 }
@@ -187,5 +188,7 @@
     [self viewDidLoad];
     [self viewWillAppear:YES];
 }
+
+
 
 @end

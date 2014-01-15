@@ -32,7 +32,9 @@
 	// Do any additional setup after loading the view.
     
     self.emailTextField.delegate = self;
-    
+    PFUser *currentUser = [PFUser currentUser];
+    self.emailLabel.text = [currentUser objectForKey:@"email"];
+    self.usernameLabel.text = [currentUser objectForKey:@"username"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,12 +62,19 @@
 }
 
 - (IBAction)passwordReset:(id)sender {
-    [PFUser requestPasswordResetForEmailInBackground:email];
-    NSLog(@"%@", email);
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request sent!" message:@"You should recieve an email with a password reset link. Follow the instructions in the email to reset your password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    [alert show];
+    if (email) {
+        [PFUser requestPasswordResetForEmailInBackground:email];
+        NSLog(@"%@", email);
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request sent!" message:@"You should recieve an email with a password reset link. Follow the instructions in the email to reset your password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Tut, tut, looks like you didn't enter your email. Try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+    }
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

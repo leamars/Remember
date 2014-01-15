@@ -69,6 +69,7 @@
         [self setUpDailyDare];
     }
     
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -77,6 +78,22 @@
     NSLog(@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]);
     
     self.gamesPlayed.text = [NSString stringWithFormat:@"%i", [userDefaults integerForKey:@"GamesToday"]];
+    
+    [self animateSmiley];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.8
+                                     target:self
+                                   selector:@selector(smileyToWinky)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.smileyView.image = [UIImage imageNamed:@"smiley"];
+}
+
+- (void) smileyToWinky {
+    self.smileyView.image = [UIImage imageNamed:@"winky"];
 }
 
 - (float)timeToDailyReset {
@@ -91,6 +108,19 @@
     float timeToReset = 24*60*60 - hour*60*60 - minute*60 - seconds;
 
     return timeToReset;
+}
+
+- (void) animateSmiley {
+    CABasicAnimation*    layerAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    layerAnimation.duration = 0.8;
+    layerAnimation.beginTime = CACurrentMediaTime() + 2;
+    layerAnimation.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
+    layerAnimation.timingFunction = [CAMediaTimingFunction
+                                     functionWithName:kCAMediaTimingFunctionLinear];
+    layerAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    layerAnimation.toValue = [NSNumber numberWithFloat:6];
+    layerAnimation.byValue = [NSNumber numberWithFloat:1];
+    [self.smileyView.layer addAnimation:layerAnimation forKey:@"layerAnimation"];
 }
 
 - (void) resetNumOfGamesPlayedInDay {
@@ -181,6 +211,11 @@
     randomWord = arc4random()% ([theWords count] - 1);
     randomShape = arc4random()% ([theShapes count] - 1);
     randomColor = [self randomColor];
+    
+    // converting the color into CGFloats, and then ints, so it can be stores in
+    // NSUserdefaults, and then converted back to the correct color
+    // There's probably an easier way to do this using categories, but everything I've
+    // found up to now deals with RGB nos HSB
     
     CGFloat hFloat,sFloat,bFloat,aFloat;
     [randomColor getHue:&hFloat saturation:&sFloat brightness:&bFloat alpha:&aFloat];
