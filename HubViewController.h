@@ -18,6 +18,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *dailyDareState;
 
 - (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon;
-- (void) recieveDataForDailyeDare:(BOOL)dareCompleted;
+- (void) recieveDataForDailyeDare:(BOOL)dareAccepted;
 
 @end

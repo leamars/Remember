@@ -11,7 +11,7 @@
 
 @protocol DailyDareViewControllerDelegate <NSObject>
 
-- (void) recieveDataForDailyeDare:(BOOL)dareCompleted;
+- (void) recieveDataForDailyeDare:(BOOL)dareAccepted;
 
 @end
 
@@ -22,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *dareImage;
 @property (strong, nonatomic) Option *recievedDailyOption;
 @property (nonatomic) BOOL selectedOption;
+@property (strong, nonatomic) IBOutlet UILabel *attributeTwoLabel;
+
 
 - (IBAction)back:(id)sender;
 - (IBAction)acceptDare:(id)sender;

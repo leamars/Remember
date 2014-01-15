@@ -27,15 +27,14 @@
     int randomShape;
     UIColor *randomColor;
     Option *dailyOption;
-    NSNumber *shapeWithShape;
-    NSNumber *shapeWithColor;
-    NSNumber *wordWithText;
-    NSNumber *wordWithColor;
+    NSNumber *shapeWithShapeAndColor;
+    NSNumber *wordWithTextAndColor;
     NSMutableArray *optionsArr;
     BOOL chosenOption;
     CGFloat hue;
     CGFloat brightness;
     CGFloat saturation;
+    BOOL acceptedDare;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -66,7 +65,10 @@
     
     NSLog(@"My defaults: %@", dict);
     
-    [self setUpDailyDare];
+    if (!acceptedDare) {
+        [self setUpDailyDare];
+    }
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -131,6 +133,10 @@
 
 }
 
+- (void) setUpDailyAnswersView {
+    
+}
+
 - (Option *)setUpDailyOption {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -164,17 +170,13 @@
 }
 
 - (void) saveInfoInUserDefaults {
-    shapeWithShape = [NSNumber numberWithBool:YES];
-    shapeWithColor = [NSNumber numberWithBool:YES];
-    wordWithText = [NSNumber numberWithBool:YES];
-    wordWithColor = [NSNumber numberWithBool:YES];
+    shapeWithShapeAndColor = [NSNumber numberWithBool:YES];
+    wordWithTextAndColor = [NSNumber numberWithBool:YES];
     
     optionsArr = [[NSMutableArray alloc] init];
     
-    [optionsArr addObject:shapeWithColor];
-    [optionsArr addObject:shapeWithShape];
-    [optionsArr addObject:wordWithColor];
-    [optionsArr addObject:wordWithText];
+    [optionsArr addObject:shapeWithShapeAndColor];
+    [optionsArr addObject:wordWithTextAndColor];
     
     randomWord = arc4random()% ([theWords count] - 1);
     randomShape = arc4random()% ([theShapes count] - 1);
@@ -237,8 +239,8 @@
     //NSLog(@"Games won today: %i", gamesWon);
 }
 
-- (void) recieveDataForDailyeDare:(BOOL)dareCompleted {
-    
+- (void) recieveDataForDailyeDare:(BOOL)dareAccepted {
+    acceptedDare = dareAccepted;
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "DailyDareViewController.h"
+#import "HubViewController.h"
 
 @interface DailyDareViewController ()
 
@@ -58,7 +59,8 @@
     [self.dareImage setBackgroundImage:dailyOption.shape forState:UIControlStateNormal];
     
     // set up the label
-    self.attributeLabel.text = @"shape!";
+    self.attributeLabel.text = @"shape";
+    self.attributeTwoLabel.text = @"color!";
 
 }
 
@@ -83,6 +85,29 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void) lockedView {
+    
+}
+
+- (void) optionsView {
+    
+}
+
 - (IBAction)acceptDare:(id)sender {
+    HubViewController *hvc = [[HubViewController alloc] init];
+    [hvc recieveDataForDailyeDare:YES];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
+    [UIView commitAnimations];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelay:0.375];
+    
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [UIView commitAnimations];
 }
 @end
