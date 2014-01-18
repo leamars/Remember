@@ -169,6 +169,13 @@
     [userDefaults setBool:YES forKey:@"resetCalled"];
     
         NSLog(@"After the reset: Games today: %i and Games won today: %i", [userDefaults integerForKey:@"GamesToday"], [userDefaults integerForKey:@"GamesWonToday"]);
+    
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+    
+    // Send push notification to query
+    [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                   withMessage:@"Did you remember to activate your daily dare?"];
 }
 
 - (void) setUpDailyDare {
