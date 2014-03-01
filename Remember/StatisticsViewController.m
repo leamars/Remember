@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +92,7 @@
     [self.view addSubview:wonChartLabel];
     [self.view addSubview:wonChart];
     [wonChart strokeChart];
-   
+    
     NSArray *dareYLabels = [self getDareArray];
     
     NSLog(@"DARE Y LABELS: %@", dareYLabels);
@@ -112,7 +112,7 @@
     [self.view addSubview:dareChartLabel];
     [self.view addSubview:dareChart];
     [dareChart strokeChart];
-
+    
 }
 
 - (IBAction)goBack:(id)sender {
@@ -135,7 +135,7 @@
     for (int i = 1; i < 8; i++) {
         [dareArray addObject:dailyDares[numOfItems - i]];
     }
-
+    
     return dareArray;
 }
 
@@ -152,7 +152,7 @@
         numOfItems = 7;
     }
     float value;
-
+    
     for (int i = 0; i < numOfItems; i++) {
         
         NSNumber *total = gamesTotal[lastItem - i];
