@@ -56,7 +56,7 @@
     
     // randomly select what kind of a challenge it will be
     
-    NSLog(@"WHAT ARE MY BOOLS?\n [userDefaults boolForKey:@'throughSelection']: %hhd\n[userDefaults boolForKey:@'dailyDareOpenedForFirstTime'] %hhd\n[userDefaults boolForKey:@'dareAccepted']: %hhd\n[userDefaults boolForKey:@'firstAppRun']: %hhd\n[userDefaults boolForKey:@'dailyDareOpenedForFirstTime']: %hhd\nDid I get my daily option? :%@", [userDefaults boolForKey:@"throughSelection"], [userDefaults boolForKey:@"dailyDareOpenedForFirstTime"], [userDefaults boolForKey:@"dareAccepted"], [userDefaults boolForKey:@"firstAppRun"], [userDefaults boolForKey:@"dailyDareOpenedForFirstTime"], self.recievedDailyOption);
+    NSLog(@"WHAT ARE MY BOOLS?\n [userDefaults boolForKey:@'throughSelection']: %hhd\n[userDefaults boolForKey:@'dailyDareOpenedForFirstTime'] %hhd\n[userDefaults boolForKey:@'dareAccepted']: %hhd\n[userDefaults boolForKey:@'firstAppRun']: %hhd\n[userDefaults boolForKey:@'dailyDareOpenedForFirstTime']: %hhd\nDid I get my daily option? :%@ \nWas the reset called? :%d", [userDefaults boolForKey:@"throughSelection"], [userDefaults boolForKey:@"dailyDareOpenedForFirstTime"], [userDefaults boolForKey:@"dareAccepted"], [userDefaults boolForKey:@"firstAppRun"], [userDefaults boolForKey:@"dailyDareOpenedForFirstTime"], self.recievedDailyOption, [userDefaults boolForKey:@"resetCalled"]);
     
     if ([userDefaults boolForKey:@"firstAppRun"]) {
         [self dailyOptionView];
@@ -347,6 +347,7 @@
     if (shapeSelected) {
         if ([optImage isEqual:[btn backgroundImageForState:UIControlStateNormal]] && [opt.color isEqual:btn.backgroundColor]) {
             [userDefaults setInteger:1 forKey:@"dailyDareWon"];
+            NSLog(@"What's in dailyDareWon: %li", (long)[userDefaults integerForKey:@"dailyDareWon"]);
             return YES;
         }
     }
@@ -354,11 +355,14 @@
     else if (!shapeSelected) {
         if ([opt.word isEqualToString:btn.titleLabel.text] && [opt.color isEqual:[btn titleColorForState:UIControlStateNormal]]) {
             [userDefaults setInteger:1 forKey:@"dailyDareWon"];
+            NSLog(@"What's in dailyDareWon: %li", (long)[userDefaults integerForKey:@"dailyDareWon"]);
             return YES;
         }
     }
-    
-    [userDefaults setInteger:1 forKey:@"dailyDareWon"];
+    else {
+        [userDefaults setInteger:0 forKey:@"dailyDareWon"];
+        NSLog(@"What's in dailyDareWon: %li", (long)[userDefaults integerForKey:@"dailyDareWon"]);
+    }
     return NO;
 }
 

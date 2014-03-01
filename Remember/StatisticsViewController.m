@@ -48,6 +48,8 @@
     gamesWon = [currentUser objectForKey:@"gamesWonToday"];
     dailyDares = [currentUser objectForKey:@"dailyDareWon"];
     
+    NSLog(@"daily dares we get: %@", dailyDares);
+    
     
     // set up x and y labels for the graph
     
@@ -93,6 +95,8 @@
    
     NSArray *dareYLabels = [self getDareArray];
     
+    NSLog(@"DARE Y LABELS: %@", dareYLabels);
+    
     // DARE GRAPH
     PNBarChart *dareChart = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 375.0, SCREEN_WIDTH, 200.0)];
     [dareChart setXLabels:days];
@@ -125,11 +129,11 @@
         numOfItems = [dailyDares count];
     }
     else {
-        numOfItems = 7;
+        numOfItems = [dailyDares count];
     }
     
-    for (int i = numOfItems; i > 0; i--) {
-        [dareArray addObject:dailyDares[i - 1]];
+    for (int i = 1; i < 8; i++) {
+        [dareArray addObject:dailyDares[numOfItems - i]];
     }
 
     return dareArray;

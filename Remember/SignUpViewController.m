@@ -38,6 +38,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:YES forKey:@"firstAppRun"];
+    [userDefaults setInteger:0 forKey:@"GamesToday"];
     
     self.nameTextField.delegate = self;
     self.usernameTextField.delegate = self;

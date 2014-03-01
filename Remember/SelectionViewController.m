@@ -50,16 +50,16 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL firstSelectionRunOfDay = [userDefaults boolForKey:@"firstSelectionRunOfDay"];
-    NSLog(@"first selection run of day: %hhd", firstSelectionRunOfDay);
-    if (firstSelectionRunOfDay) {
-        NSLog(@"Games won today: %i", won);
+    NSLog(@"first selection run of day: %d", firstSelectionRunOfDay);
+    if (firstSelectionRunOfDay || [userDefaults integerForKey:@"GamesToday"] == 0) {
+        NSLog(@"Games won today if we're resetting: %i", won);
         [userDefaults setBool:NO forKey:@"firstSelectionRunOfDay"];
         won = 0;
         [userDefaults setInteger:won forKey:@"GamesWonToday"];
     }
     else if (!firstSelectionRunOfDay) {
         won = [userDefaults integerForKey:@"GamesWonToday"];
-        NSLog(@"Games won today: %i", won);
+        NSLog(@"Games won today for NO reset: %i", won);
     }
 }
 
@@ -286,6 +286,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     if (buttonIndex == 1) {
         [UIView beginAnimations:nil context:NULL];
@@ -297,8 +298,8 @@
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDelay:0.375];
         self.gamesPlayed++;
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setInteger:self.gamesPlayed forKey:@"GamesToday"];
+        [self.delegate recieveDataForGamesPlayed:self.gamesPlayed andGamesWon:won];
+        //[userDefaults setInteger:self.gamesPlayed forKey:@"GamesToday"];
         
         [self.navigationController popViewControllerAnimated:NO];
         
@@ -318,17 +319,14 @@
         // send information to delegate - HubViewController
         HubViewController *hvc = [[HubViewController alloc] init];
         self.gamesPlayed++;
-        [hvc recieveDataForGamesPlayed:self.gamesPlayed andGamesWon:won];
+        [self.delegate recieveDataForGamesPlayed:self.gamesPlayed andGamesWon:won];
         
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setInteger:self.gamesPlayed forKey:@"GamesToday"];
+        //[userDefaults setInteger:self.gamesPlayed forKey:@"GamesToday"];
         
         NSArray *viewControllers = [self.navigationController viewControllers];
         if ([viewControllers[1] isEqual: hvc]) {
-            NSLog(@"LEA I PRETTY");
         }
         
-        NSLog(@"MY VIEW CONTROLLERS: %@", viewControllers);
         
         [self.navigationController popToViewController:viewControllers[1] animated:NO];
         

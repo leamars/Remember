@@ -14,7 +14,7 @@
 
 @interface HubViewController () {
     int num;
-    int gamesToday;
+    int gamezToday;
 }
 
 @end
@@ -50,7 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// Do any additional setup after loading the view.a
     
     PFUser *currentUser = [PFUser currentUser];
     name = [currentUser objectForKey:@"name"];
@@ -60,11 +60,14 @@
     theWords = [[NSMutableArray alloc] initWithObjects:@"bird", @"snake", @"table", @"keys", @"picture", @"radio", @"folder", @"hanger", @"post", @"cucumber", @"elephant", @"crocodile", @"plastic", @"mortgage", @"sinister", @"sleep", @"park", @"prison", @"level", @"smile", @"stop", @"spot", @"elastic", @"gorge", @"mister", @"slap", @"fonder", @"hamper", @"rake", @"lake", @"letter", @"better", @"dark", @"eagle", @"eager", nil];
     
     theShapes = [[NSMutableArray alloc] initWithObjects:@"circleEmptyReverse", @"triangleEmptyReverse", @"squareEmptyReverse", @"circleFullReverse", @"triangleFullReverse", @"squareFullReverse", nil];
-
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [defaults dictionaryRepresentation];
+//    NSLog(@"my defaults: %@", dict);
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -84,15 +87,19 @@
                                     repeats:NO];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"Games played today: %i", [userDefaults integerForKey:@"GamesToday"]);
+    //NSLog(@"Games played today: %li", (long)[userDefaults integerForKey:@"GamesToday"]);
     
-    self.gamesPlayed.text = [NSString stringWithFormat:@"%i", [userDefaults integerForKey:@"GamesToday"]];
+    self.gamesPlayed.text = [NSString stringWithFormat:@"%li", (long)[userDefaults integerForKey:@"GamesToday"]];
     
     [self resetNumOfGamesPlayedInDay];
     
     if (![userDefaults boolForKey:@"dareAccepted"]) {
         self.dailyDareState.text = @"Not accepted";
     }
+    
+//    if ([userDefaults boolForKey:@"firstRunOfDay"]) {
+//        [self setGamesPlayedToZeroOnNewDay];
+//    }
     
 }
 
@@ -154,22 +161,26 @@
     [currentUser addObject:[NSNumber numberWithInt:[userDefaults integerForKey:@"GamesToday"]] forKey:@"gamesToday"];
     [currentUser addObject:[NSNumber numberWithInt:[userDefaults integerForKey:@"GamesWonToday"]] forKey:@"gamesWonToday"];
     [currentUser saveInBackground];
-    [currentUser addObject:[NSNumber numberWithInt:[userDefaults integerForKey:@"DailyDareWon"]] forKey:@"dailyDareWon"];
+    [currentUser addObject:[NSNumber numberWithInt:[userDefaults integerForKey:@"dailyDareWon"]] forKey:@"dailyDareWon"];
+    [currentUser saveInBackground];
+
     
-    NSLog(@"Games today: %i and Games won today: %i", [userDefaults integerForKey:@"GamesToday"], [userDefaults integerForKey:@"GamesWonToday"]);
+    //NSLog(@"Games today: %li and Games won today: %li", [userDefaults integerForKey:@"GamesToday"], (long)[userDefaults integerForKey:@"GamesWonToday"]);
     
     [userDefaults setInteger:0 forKey:@"GamesToday"];
     [userDefaults setInteger:0 forKey:@"GamesWonToday"];
     [userDefaults setBool:YES forKey:@"firstRunOfDay"];
     [userDefaults setBool:YES forKey:@"firstSelectionRunOfDay"];
+//    NSLog(@"First selection run of day: %d", [userDefaults boolForKey:@"firstSelectionRunOfDay"]);
     [userDefaults setBool:YES forKey:@"lastRunOfDay"];
     [userDefaults setBool:YES forKey:@"dailyDareOpenedForFirstTime"];
     [userDefaults setBool:YES forKey:@"firstAppRun"];
     [userDefaults setBool:YES forKey:@"throughSelection"];
     [userDefaults setBool:YES forKey:@"resetCalled"];
+    NSLog(@"I JUST RESET EVERYTHING!!!");
     
-        NSLog(@"After the reset: Games today: %i and Games won today: %i", [userDefaults integerForKey:@"GamesToday"], [userDefaults integerForKey:@"GamesWonToday"]);
-    
+//        NSLog(@"After the reset: Games today: %li and Games won today: %li", [userDefaults integerForKey:@"GamesToday"], [userDefaults integerForKey:@"GamesWonToday"]);
+//    
     PFQuery *pushQuery = [PFInstallation query];
     [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
     
@@ -183,7 +194,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL firstDailyDareRunOfDay = [userDefaults boolForKey:@"dailyDareOpenedForFirstTime"];
     if (firstDailyDareRunOfDay) {
-        NSLog(@"AM I EVER GETTING HERE?");
+//        NSLog(@"AM I EVER GETTING HERE?");
         [self saveInfoInUserDefaults];
     }
     
@@ -211,12 +222,12 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    int shape = [userDefaults integerForKey:@"randomShape"];
-    int word = [userDefaults integerForKey:@"randomWord"];
+    long int shape = [userDefaults integerForKey:@"randomShape"];
+    long int word = [userDefaults integerForKey:@"randomWord"];
     
-    int iH = [userDefaults integerForKey:@"hue"];
-    int iS = [userDefaults integerForKey:@"saturation"];
-    int iB = [userDefaults integerForKey:@"brightness"];
+    long int iH = [userDefaults integerForKey:@"hue"];
+    long int iS = [userDefaults integerForKey:@"saturation"];
+    long int iB = [userDefaults integerForKey:@"brightness"];
     
     CGFloat h = iH / 255.0;
     CGFloat s = iS / 255.0;
@@ -298,6 +309,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
         FirstViewController *fvc = [segue destinationViewController];
+        fvc.delegate = self;
+//        NSLog(@"FVC.DELEGATE IS %@", fvc.delegate);
         
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         BOOL firstRunOfDay = [userDefaults boolForKey:@"firstRunOfDay"];
@@ -308,9 +321,7 @@
     
     if ([segue.identifier isEqualToString:@"dailyDareSegue"]) {
         DailyDareViewController *ddvc = [segue destinationViewController];
-        
         ddvc.delegate = self;
-        
         // is user hasn't clicked on accept dare, set it up, otherwise set up lockedView
         NSUserDefaults *userDefauls = [NSUserDefaults standardUserDefaults];
         BOOL acceptedDare = [userDefauls boolForKey:@"dareAccepted"];
@@ -335,19 +346,33 @@
     
 }
 
-- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon; {
-    // get the amount od games played during the last session, and adds it to the total
-    // amount of games played today
-    
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon; {
+//    // get the amount od games played during the last session, and adds it to the total
+//    // amount of games played today
 //    
-//    gamesToday = [userDefaults integerForKey:@"GamesToday"] + games;
-//    //NSLog(@"games played today: %i", gamesToday);
-//    [userDefaults setInteger:gamesToday forKey:@"GamesToday"];
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSLog(@"games this round: %i", games);
+//    
+//    gamezToday = [userDefaults integerForKey:@"GamesToday"] + games;
+//    NSLog(@"games played today: %i", gamezToday);
+//    [userDefaults setInteger:gamezToday forKey:@"GamesToday"];
 //    
 //    //NSLog(@"Games won today: %i", gamesWon);
-}
+//}
 
+
+- (void)recieveOverallData:(int) gamesToday andWonData:(int) gamesWon {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSLog(@"games this round in HUB: %i", gamesToday);
+//    NSLog(@"Before adding to GamesToday: %i", [userDefaults integerForKey:@"GamesToday"]);
+//    
+//    gamezToday = [userDefaults integerForKey:@"GamesToday"] + gamesToday;
+//    NSLog(@"games played today: %i", gamezToday);
+    [userDefaults setInteger:gamesToday forKey:@"GamesToday"];
+    [userDefaults setInteger:gamesWon forKey:@"GamesWonToday"];
+//    NSLog(@"What's actually in GamesToday: %li", (long)[userDefaults integerForKey:@"GamesToday"]);
+//    NSLog(@"What's actually in GamesWonToday: %li", (long)[userDefaults integerForKey:@"GamesWonToday"]);
+}
 
 
 @end

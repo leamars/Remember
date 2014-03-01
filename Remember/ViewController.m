@@ -22,23 +22,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:YES forKey:@"firstAppRun"];
+    [userDefaults setInteger:0 forKey:@"GamesToday"];
+    [userDefaults setBool:NO forKey:@"dareAccepted"];
+    //[self performSegueWithIdentifier:@"toHub" sender:self];
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:NO forKey:@"dareAccepted"];
-    [userDefaults setBool:YES forKey:@"firstAppRun"];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
+        NSLog(@"Is there a current user?");
         [self performSegueWithIdentifier:@"toHub" sender:self];
         
     } else {
-        
+        NSLog(@"There is no current user.");
     }
 }
 

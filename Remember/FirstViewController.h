@@ -11,7 +11,7 @@
 
 @protocol FirstViewControllerDelegate <NSObject>
 
-- (void)finallyRecieveData:(int) games;
+- (void)recieveOverallData:(int) gamesToday andWonData:(int) gamesWon;
 
 @end
 
@@ -24,8 +24,9 @@
 @property (nonatomic, strong) NSMutableArray *theShapes;
 @property (strong, nonatomic) IBOutlet UILabel *instructionLabel;
 
-- (void)recieveData:(int) games;
+- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon;
 - (IBAction)back:(id)sender;
 - (IBAction)refresh:(id)sender;
+
 
 @end

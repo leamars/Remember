@@ -20,6 +20,7 @@
     BOOL shapeVersion;
     BOOL shapeVersionShape;
     BOOL wordVersionColor;
+    int won;
 }
 
 @end
@@ -38,11 +39,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"what is my delegate? %@", self.delegate);
 	// Do any additional setup after loading the view.
     
     self.theWords = [[NSMutableArray alloc] initWithObjects:@"bird", @"snake", @"table", @"keys", @"picture", @"radio", @"folder", @"hanger", @"post", @"cucumber", @"elephant", @"crocodile", @"plastic", @"mortgage", @"sinister", @"sleep", @"park", @"prison", @"level", @"smile", @"stop", @"spot", @"elastic", @"gorge", @"mister", @"slap", @"fonder", @"hamper", @"rake", @"lake", @"letter", @"better", @"dark", @"eagle", @"eager", nil];
     
     self.theShapes = [[NSMutableArray alloc] initWithObjects:@"circleEmptyReverse", @"triangleEmptyReverse", @"squareEmptyReverse", @"circleFullReverse", @"triangleFullReverse", @"squareFullReverse", nil];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    numOfGames = [userDefaults integerForKey:@"GamesToday"];
+    won = [userDefaults integerForKey:@"GamesWonToday"];
     
 }
 
@@ -80,10 +86,10 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    BOOL firstRun = [userDefaults boolForKey:@"firstRun"];
+    BOOL firstRun = [userDefaults boolForKey:@"firstAppRun"];
     if (firstRun) {
         numOfGames = self.games;
-        [userDefaults setBool:YES forKey:@"firstRun"];
+        [userDefaults setBool:NO forKey:@"firstAppRun"];
     }
 
 }
@@ -174,10 +180,14 @@
 
 -(void)viewDidDisappear:(BOOL)animated {
     numOfGames++;
+    NSLog(@"NUMFGAMES AFTER DISAPPEARING: %i", numOfGames);
 }
 
-- (void)recieveData:(int) games {
-
+- (void)recieveDataForGamesPlayed:(int) games andGamesWon:(int)gamesWon; {
+    NSLog(@"IN FVC THE NUM OF GAMES TOTAL: %i, and WON: %i", games, gamesWon);
+    numOfGames = games;
+    won = gamesWon;
+    [self.delegate recieveOverallData:numOfGames andWonData:won];
 }
 
 - (IBAction)back:(id)sender {
